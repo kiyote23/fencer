@@ -1,6 +1,6 @@
 # Fencer
 
-TODO: Write a gem description
+Fencer is a simple ruby script to scan through text files and look for "fenced" blocks of text. These blocks are then copied to new files based on parameters set up in the script.
 
 ## Installation
 
@@ -24,7 +24,7 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/fencer/fork )
+1. Fork it ( https://github.com/kiyote23/fencer/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
