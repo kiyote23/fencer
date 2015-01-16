@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../lib/fencer'
+require '../lib/fencer'
 
 describe Fencer do
 	describe 'Fencer object' do
