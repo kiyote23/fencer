@@ -1,4 +1,4 @@
-require "fencer/version"
+require_relative "fencer/version"
 
 class Fencer
 	attr_accessor :input_array, :fence_start, :fence_end, :output_array
