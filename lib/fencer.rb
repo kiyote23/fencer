@@ -22,6 +22,10 @@ class Fencer
 		self.output_array = input_array[self.fence_start+1...self.fence_end].to_a
 	end
 
+	def location_tag
+		/[a-zA-Z]+/.match(input_array[fence_start]).to_s
+	end
+
 	def process_actions
 		input_array.each do |string|
 			if string =~ /^-/i

@@ -1,9 +1,5 @@
 require 'spec_helper'
-require 'appscript'
-require 'sqlite3'
-require 'etc'
 require_relative '../lib/fencer'
-require_relative '../lib/omnifocus'
 
 describe Fencer do
 	describe 'object' do
@@ -52,8 +48,9 @@ describe Fencer do
 	describe "fence mender" do
 		test_file = File.new('input2.txt', "r")
 		test_object = Fencer.new(test_file)
+		test_object.find_fence
 		it 'identifies location tags' do
-			pending
+			expect(test_object.location_tag).to eq('test')
 		end
 	end
 end
