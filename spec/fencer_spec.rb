@@ -49,4 +49,11 @@ describe Fencer do
 			expect(count2-count).to eq(2)
 		end
 	end
+	describe "fence mender" do
+		test_file = File.new('input2.txt', "r")
+		test_object = Fencer.new(test_file)
+		it 'identifies location tags' do
+			pending
+		end
+	end
 end

@@ -1,7 +1,4 @@
 require_relative "fencer/version"
-require_relative "osascript"
-require 'appscript'
-include Appscript
 
 class Fencer
 	attr_accessor :input_array, :fence_start, :fence_end, :output_array, :action_array
