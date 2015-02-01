@@ -1,7 +1,7 @@
 require_relative "fencer/version"
 
 class Fencer
-	attr_accessor :input_array, :fence_start, :fence_end, :output_array, :action_array
+	attr_accessor :input_array, :fence_start, :fence_end, :output_array, :action_array, :destination_hash
 	def initialize(input_file)
 		@input_array = []
 		@action_array = []
@@ -9,6 +9,7 @@ class Fencer
 		@input_array << line 
 		end
 		# find_fence(input_array)
+		@destination_hash = { :test => "test/index.txt", :proj => "projects/index.txt", :blog => "blog/index.txt" }
 	end
 
 	def find_fence
@@ -24,6 +25,10 @@ class Fencer
 
 	def location_tag
 		/[a-zA-Z]+/.match(input_array[fence_start]).to_s
+	end
+
+	def destination_index
+		destination_hash[self.location_tag.to_sym]
 	end
 
 	def process_actions
@@ -57,6 +62,9 @@ class Fencer
 	end
 
 	def mend_fences
+		f = File.open("#{self.destination_index}", "a")
+		f.puts self.output_array
+		f.close
 	end
 
 	def archive_to_evernote

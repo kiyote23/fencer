@@ -1,7 +1,7 @@
 This is not an action.
-This is an action.
+-This is an action.
 This is also not an action.
 <<< test
 This is not an action.
 >>>
-This is another action.
+- This is another action.

@@ -1,5 +1,5 @@
 Given /^I have a text file$/ do
-	@test_file = File.new('input.txt', "r")
+	@test_file = File.new('input2.txt', "r")
 end
 
 When /^I run the processor$/ do
@@ -10,13 +10,9 @@ Then /^it should move action items to Omnifocus$/ do
 	@test_processor.process_actions
 end
 
-Then /^it should move fenced text to new text files$/ do
-	@test_processor.new_fence
-end
-
 Then /^it should append text to existing text files$/ do
-	# @test_processor.mend_fences
-	pending
+	@test_processor.find_fence
+	@test_processor.mend_fences
 end
 
 Then /^it should create a new note in Evernote with all content$/ do

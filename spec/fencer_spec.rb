@@ -20,37 +20,28 @@ describe Fencer do
 			expect(test_object.output_array).to eq(result)
 		end
 	end
-	describe 'action processor' do
-		test_file = File.new('input2.txt', "r")
-		test_object = Fencer.new(test_file)
-		it 'finds lines marked with "-"' do
-			test_object.process_actions
-			expect(test_object.action_array).to be_an(Array)
-			expect(test_object.action_array.size).to eq(2)
-		end
-		it 'removes the dash from the start of the line' do
-			test_object.process_actions
-			test_object.action_array.each do |string| 
-				expect(string[0]).to_not eq('-')
-				expect(string[0]).to_not eq(' ')
-			end
-			expect(test_object.action_array[0].chars.first).to eq('T')
-			expect(test_object.action_array[1].chars.first).to eq('T')
-		end
-		it 'sends the actions to Omnifocus' do
-			count = test_object.inbox_count
-			test_object.process_actions
-			count2 = test_object.inbox_count
-			expect(count2).to be > count
-			expect(count2-count).to eq(2)
-		end
-	end
+
 	describe "fence mender" do
 		test_file = File.new('input2.txt', "r")
 		test_object = Fencer.new(test_file)
 		test_object.find_fence
 		it 'identifies location tags' do
 			expect(test_object.location_tag).to eq('test')
+		end
+		it 'determines output file from tag' do
+			expect(test_object.destination_index).to eq('test/index.txt')
+		end
+		it 'appends text to output file' do
+			count1 = 0
+			File.open('test/index.txt', "r").each do |line|
+				count1 += 1
+			end
+			test_object.mend_fences
+			count2 = 0
+			File.open('test/index.txt', "r").each do |line|
+				count2 += 1
+			end
+			expect(count2).to be > count1
 		end
 	end
 end
